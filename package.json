@@ -1,0 +1,19 @@
+{
+  "name": "node-crud-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon ./server.js localhost 3000"
+  },
+  "keywords": [],
+  "author": "malik",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongodb": "^3.1.10",
+    "mongoose": "^5.4.3",
+    "nodemon": "^1.18.9"
+  }
+}
