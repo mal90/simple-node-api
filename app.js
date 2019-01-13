@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const app = express();
 var db;
 var CONFIG = require('./config.json');
+const port=process.env.PORT || 3000
+
 
 
 var userName = CONFIG.uname;
@@ -22,7 +24,7 @@ mongoose.connect(URL);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log('listening on 3000');
 })
 
