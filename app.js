@@ -3,15 +3,15 @@ var mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
 var db;
-var CONFIG = require('./config.json');
+//var CONFIG = require('./config.json');
 const port=process.env.PORT || 3000;
 
 console.log("process.....");
 console.log(process.env.port);
 
-var userName = CONFIG.uname;
-var passWord = CONFIG.pword;
-var dbName = CONFIG.dbname;
+var userName = process.env.UNAME;
+var passWord = process.env.PWORD;
+var dbName = process.env.DBNAME;
 
 
 var URL = 'mongodb://' + userName + ':' + passWord + '@ds161190.mlab.com:61190/' + dbName;
