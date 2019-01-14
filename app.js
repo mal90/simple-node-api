@@ -3,13 +3,13 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
 const CONFIG = require('./config.json');
-const port=process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 var db;
 
 
 var userName = process.env.UNAME || CONFIG.uname;
 var passWord = process.env.PWORD || CONFIG.pword;
-var dbName = process.env.DBNAME  || CONFIG.dbname;
+var dbName = process.env.DBNAME || CONFIG.dbname;
 
 
 var URL = 'mongodb://' + userName + ':' + passWord + '@ds161190.mlab.com:61190/' + dbName;
@@ -25,6 +25,10 @@ db = mongoose.connection;
 
 app.listen(port, () => {
     console.log('listening on port' + port);
+})
+
+app.get('/', function (req, res) {
+    res.send('simple node service..')
 })
 
 app.get('/api/products', (req, res) => {
@@ -58,3 +62,7 @@ app.post('/api/product/add', (req, res) => {
         }
     })
 })
+
+app.get('*',function (req, res) {
+    res.redirect('/');
+});
