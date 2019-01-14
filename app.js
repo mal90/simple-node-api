@@ -1,17 +1,15 @@
 const express = require('express');
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
-var db;
-//var CONFIG = require('./config.json');
+const CONFIG = require('./config.json');
 const port=process.env.PORT || 3000;
+var db;
 
-console.log("process.....");
-console.log(process.env.port);
 
-var userName = process.env.UNAME;
-var passWord = process.env.PWORD;
-var dbName = process.env.DBNAME;
+var userName = process.env.UNAME || CONFIG.uname;
+var passWord = process.env.PWORD || CONFIG.pword;
+var dbName = process.env.DBNAME  || CONFIG.dbname;
 
 
 var URL = 'mongodb://' + userName + ':' + passWord + '@ds161190.mlab.com:61190/' + dbName;
@@ -23,10 +21,10 @@ app.use(bodyParser.json())
 
 mongoose.connect(URL);
 mongoose.Promise = global.Promise;
-var db = mongoose.connection;
+db = mongoose.connection;
 
 app.listen(port, () => {
-    console.log('listening on 3000');
+    console.log('listening on port' + port);
 })
 
 app.get('/api/products', (req, res) => {
