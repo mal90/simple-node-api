@@ -4,9 +4,10 @@ const bodyParser = require('body-parser');
 const app = express();
 var db;
 var CONFIG = require('./config.json');
-const port=process.env.PORT || 3000
+const port=process.env.PORT || 3000;
 
-
+console.log("process.....");
+console.log(process.env.port);
 
 var userName = CONFIG.uname;
 var passWord = CONFIG.pword;
